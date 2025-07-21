@@ -26,6 +26,7 @@ message(STATUS "Build docwire: ${DOCWIRE_VERSION}")
 
 option(DOCWIRE_DOC "Compile Documentation" ON)
 option(DOCWIRE_TRACE "Enable Tracing" OFF)
+option(DOCWIRE_TESTS "Build tests" ON)
 option(ADDRESS_SANITIZER "Enable address sanitizer" OFF)
 
 if (ADDRESS_SANITIZER)
@@ -65,7 +66,9 @@ foreach(extra ${extras})
    add_subdirectory(${extra})
 endforeach()
 
-add_subdirectory(tests)
+if(DOCWIRE_TESTS)
+	add_subdirectory(tests)
+endif()
 
 if (DOCWIRE_DOC)
    add_subdirectory(doc)
