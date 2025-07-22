@@ -34,7 +34,7 @@ target_include_directories(docwire_core PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT
 
 find_package(Boost REQUIRED COMPONENTS filesystem system json)
 find_package(magic_enum CONFIG REQUIRED)
-find_package(unofficial-minizip CONFIG REQUIRED)
+# find_package(unofficial-minizip CONFIG REQUIRED)
 find_package(ZLIB REQUIRED)
 find_package(Iconv REQUIRED)
 target_link_libraries(docwire_core PRIVATE
