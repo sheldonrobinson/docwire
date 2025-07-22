@@ -3,7 +3,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 include(CMakeDependentOption)
 
-option(DOCWIRE_CLI "Build CLI" ON)
+option(DOCWIRE_CLI "Build CLI" OFF)
 option(DOCWIRE_OPENAI "Enable OpenAI Module" OFF)
 cmake_dependent_option(ENABLE_OPENAI "Enable OpenAI Module" ON if(DOCWIRE_CLI OR DOCWIRE_OPENAI) OFF)
 option(DOCWIRE_LOCALAI "Enable Local AI Module" OFF)
