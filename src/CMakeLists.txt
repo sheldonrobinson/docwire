@@ -9,13 +9,13 @@ cmake_dependent_option(ENABLE_OPENAI "Enable OpenAI Module" ON if(DOCWIRE_CLI OR
 option(DOCWIRE_LOCALAI "Enable Local AI Module" OFF)
 cmake_dependent_option(ENABLE_LOCALAI "Enable Local AI Module" ON if(DOCWIRE_CLI OR DOCWIRE_LOCALAI) OFF)
 option(DOCWIRE_OCR "Enable OCR Module" OFF)
-cmake_dependent_option(ENABLE_OCR "Enable OCR Module" OFF if(DOCWIRE_CLI OR DOCWIRE_OCR) ON)
+cmake_dependent_option(ENABLE_OCR "Enable OCR Module" ON if(DOCWIRE_CLI OR DOCWIRE_OCR) OFF)
 option(DOCWIRE_MAIL "Enable Mail Module" OFF)
-cmake_dependent_option(ENABLE_MAIL "Enable Mail Module" OFF if(DOCWIRE_CLI OR DOCWIRE_MAIL) ON)
+cmake_dependent_option(ENABLE_MAIL "Enable Mail Module" ON if(DOCWIRE_CLI OR DOCWIRE_MAIL) OFF)
 option(DOCWIRE_PDF "Enable PDF Module" OFF)
-cmake_dependent_option(ENABLE_PDF "Enable PDF Module" OFF if(DOCWIRE_CLI OR DOCWIRE_PDF) ON)
+cmake_dependent_option(ENABLE_PDF "Enable PDF Module" ON if(DOCWIRE_CLI OR DOCWIRE_PDF) OFF)
 option(DOCWIRE_HTTP "Enable HTTP Module" OFF)
-cmake_dependent_option(ENABLE_HTTP "Enable HTTP Module" OFF if(DOCWIRE_CLI OR DOCWIRE_HTTP OR DOCWIRE_OPENAI) ON)
+cmake_dependent_option(ENABLE_HTTP "Enable HTTP Module" ON if(DOCWIRE_CLI OR DOCWIRE_HTTP OR DOCWIRE_OPENAI) OFF)
 
 add_compile_definitions(DOCWIRE_ENABLE_SHORT_MACRO_NAMES)
 
