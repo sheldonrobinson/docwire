@@ -15,6 +15,7 @@
 #include "local_ai_export.h"
 #include "pimpl.h"
 #include <filesystem>
+#include <vector>
 #include <string>
 
 namespace docwire::local_ai
@@ -30,9 +31,6 @@ namespace docwire::local_ai
 class DOCWIRE_LOCAL_AI_EXPORT model_runner : public with_pimpl<model_runner>
 {
 public:
-    /// @brief Default constructor. Loads model to memory.
-    model_runner();
-
     /**
      * @brief Constructor. Loads model to memory.
      * @param model_data_path Path to the folder containing model files.
@@ -45,6 +43,13 @@ public:
      * @return Processed text.
      */
     std::string process(const std::string& input);
+
+    /**
+     * @brief Create embedding for the input text using the model.
+     * @param input Text to process.
+     * @return Vector of embedding values.
+     */
+    std::vector<double> embed(const std::string& input);
 };
 
 } // namespace docwire::local_ai

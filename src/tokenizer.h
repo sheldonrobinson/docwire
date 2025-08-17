@@ -9,23 +9,30 @@
 /*  SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-DocWire-Commercial                                                                   */
 /*********************************************************************************************************************************************/
 
-#ifndef DOCWIRE_OPENAI_EXTRACT_ENTITIES_H
-#define DOCWIRE_OPENAI_EXTRACT_ENTITIES_H
+#ifndef DOCWIRE_LOCAL_AI_TOKENIZER_H
+#define DOCWIRE_LOCAL_AI_TOKENIZER_H
 
-#include "chat.h"
+#include "local_ai_export.h"
+#include "pimpl.h"
+#include <filesystem>
+#include <string>
+#include <vector>
 
-namespace docwire
+namespace docwire::local_ai
 {
-namespace openai
-{
 
-class DOCWIRE_OPENAI_EXPORT ExtractEntities : public Chat
+class DOCWIRE_LOCAL_AI_EXPORT tokenizer : public with_pimpl<tokenizer>
 {
 public:
-	explicit ExtractEntities(const std::string& api_key, Model model = Model::gpt_5, float temperature = 0.0f, ImageDetail image_detail = ImageDetail::automatic);
+    tokenizer(const std::filesystem::path& model_data_path);
+
+    std::vector<std::string> tokenize(const std::string& input);
+
+    std::vector<int> encode(const std::string& input);
+
+    std::string detokenize(const std::vector<std::string>& output_tokens);
 };
 
-} // namespace openai
-} // namespace docwire
+} // namespace docwire::local_ai
 
-#endif //DOCWIRE_OPENAI_EXTRACT_ENTITIES_H
+#endif // DOCWIRE_LOCAL_AI_TOKENIZER_H
