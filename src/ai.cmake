@@ -19,12 +19,16 @@ target_include_directories(docwire_ai PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> # during building headers are in the source tree
     $<INSTALL_INTERFACE:include>) # after installation headers are in include/docwire
 
-install(TARGETS docwire_ai EXPORT docwire_targets)
-if(MSVC)
-	install(FILES $<TARGET_PDB_FILE:docwire_ai> DESTINATION bin CONFIGURATIONS Debug)
+if(DOCWIRE_INSTALL)
+	install(TARGETS docwire_ai EXPORT docwire_targets)
+	if(MSVC)
+		install(FILES $<TARGET_PDB_FILE:docwire_ai> DESTINATION bin CONFIGURATIONS Debug)
+	endif()
 endif()
 
 include(GenerateExportHeader)
 generate_export_header(docwire_ai EXPORT_FILE_NAME ai_export.h)
 target_include_directories(docwire_ai PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ai_export.h DESTINATION include/docwire)
+if(DOCWIRE_INSTALL)
+	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ai_export.h DESTINATION include/docwire)
+endif()
